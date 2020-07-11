@@ -104,10 +104,13 @@ headModel = Dense(2, activation="softmax")(headModel)
 # the actual model we will train)
 model = Model(inputs=baseModel.input, outputs=headModel)
 
+###Don't care about this description###################################
 # loop over all layers in the base model and freeze them so they will
 # *not* be updated during the first training process
+###Don't care about this description###################################
+
 for layer in baseModel.layers:
-	layer.trainable = False
+	layer.trainable = True
 
 # compile our model
 print("[INFO] compiling model...")
@@ -153,3 +156,6 @@ plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="lower left")
 plt.savefig(args["plot"])
+
+###Command line code
+# python train_mask_detector.py --dataset dataset
